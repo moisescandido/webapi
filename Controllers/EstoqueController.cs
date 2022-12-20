@@ -18,7 +18,14 @@ namespace Estoque.Controllers
         [HttpGet]
         public IActionResult Get(int id)
         {
-            return Ok(_produto.GetById(id));
+            if (id <= 0)
+            {
+                return BadRequest("Valor Id incorreto");
+            }
+            else
+            {
+                return Ok(_produto.GetById(id));
+            }
         }
         [HttpPost]
         public IActionResult Post(ProdutoDTO produtoDTO)
@@ -37,14 +44,28 @@ namespace Estoque.Controllers
         [HttpPut]
         public IActionResult Put(int id, float preco)
         {
-            _produto.AtualizarPreco(id, preco);
-            return Ok();
+            if (id <= 0)
+            {
+                return BadRequest("Valor Id incorreto");
+            }
+            else
+            {
+                _produto.Deletar(id);
+                return Ok();
+            }
         }
         [HttpDelete]
         public IActionResult Delete(int id)
         {
-            _produto.Deletar(id);
-            return Ok();
+            if (id <= 0)
+            {
+                return BadRequest("Valor Id incorreto");
+            }
+            else
+            {
+                _produto.Deletar(id);
+                return Ok();
+            }
         }
     }
 }
