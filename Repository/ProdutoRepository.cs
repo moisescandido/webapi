@@ -1,7 +1,7 @@
 using Estoque.Context;
 using Estoque.Models.Entities;
 using Estoque.Repository.Interfaces;
-
+using Microsoft.EntityFrameworkCore;
 namespace Estoque.Repository
 {
     public class ProdutoRepository : BaseRepository, IProdutoRepository
@@ -12,9 +12,9 @@ namespace Estoque.Repository
             _context = contexto;
         }
 
-        public Produto GetById(int id)
+        public async Task<Produto> GetById(int id)
         {
-            return _context.Produtos.FirstOrDefault(x => x.Id == id);
+            return await _context.Produtos.Where(x => x.Id == id).FirstOrDefaultAsync();
         }
     }
 }

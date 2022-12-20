@@ -16,7 +16,7 @@ namespace Estoque.Controllers
             _produto = produto;
         }
         [HttpGet]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
             if (id <= 0)
             {
@@ -24,7 +24,7 @@ namespace Estoque.Controllers
             }
             else
             {
-                return Ok(_produto.GetById(id));
+                return Ok(await _produto.GetById(id));
             }
         }
         [HttpPost]

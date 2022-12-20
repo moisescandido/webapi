@@ -13,7 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ProdutoContext>(x => x.UseSqlServer("Server=localhost;database=dbEstoque;User ID=sa;Password=dojpM88NHC&JNAm56Z&;TrustServerCertificate=True;Encrypt=false"));
 builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
-
+string gay = "Leu pq é gay";
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
